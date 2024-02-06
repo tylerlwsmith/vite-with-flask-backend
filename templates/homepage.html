@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% if not is_production %}
+    <script type="module" src="{{ asset("@vite/client") }}"></script>
+    {% endif %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <h1>Hello, world!!</h1>
-    <div>asset url: {{ asset("bleep.bloop") }}</div>
+
+    <script type="module" src="{{ asset("scripts/app.ts") }}"></script>
+    <div>is production: {{ is_production }}</div>
   </body>
 </html>
