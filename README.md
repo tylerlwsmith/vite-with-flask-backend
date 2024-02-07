@@ -26,3 +26,17 @@ In another terminal, start Flask in debug mode in order to have automatic app re
 ```sh
 flask --debug --app main run
 ```
+
+## Running with production assets
+
+First, build the production assets:
+
+```sh
+npm run build
+```
+
+Then boot the server with the following command:
+
+```sh
+ENVIRONMENT=production flask --app main run
+```
