@@ -3,13 +3,15 @@ import os
 from pathlib import Path
 
 from flask import Flask, render_template
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 # Get environment variables.
 VITE_SERVER_ORIGIN = os.getenv("VITE_SERVER_ORIGIN", "http://localhost:5173/assets")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 
 # Set application constants.
-is_production = ENVIRONMENT == "production"
+is_gunicorn = "gunicorn" in os.environ.get("SERVER_SOFTWARE", "")
+is_production = ENVIRONMENT == "production" or is_gunicorn
 project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 
 # Set up application.
@@ -19,6 +21,10 @@ app = Flask(
     static_folder="public",
     template_folder="templates",
 )
+
+# Handle setting correct headers from reverse proxy webserver in production.
+if is_production:
+    app.wsgi_app = ProxyFix(app.wsgi_app)
 
 # Load manifest if running in production environment.
 manifest = dict()
@@ -58,3 +64,7 @@ def env():
 @app.get("/")
 def homepage():
     return render_template("homepage.html")
+
+
+if __name__ == "__main__":
+    app.run()
