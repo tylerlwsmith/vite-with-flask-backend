@@ -4,7 +4,7 @@ This repository is a minimal but complete proof-of-concept for a Vite with a bac
 
 This demo supports **TypeScript** and **Scss**, but other file formats like **JSX** could be added.
 
-## How to use Vite assets
+## How to use Vite assets in this demo
 
 To add an input (or entrypoint) asset, first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets/` directory.
 
