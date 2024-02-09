@@ -75,6 +75,10 @@ Then boot the production server with the following command:
 gunicorn -w 4 -b :8000 'main:app'
 ```
 
+## Additional considerations
+
+The `manifest.json` that lists all of the compiled assets is publicly viewable at http://127.0.0.1:8000/assets/manifest.json when running this demo using production settings. If you want to learn how to keep the build manifest private, [view my blog post](https://dev.to/tylerlwsmith/move-manifestjson-to-outdirs-parent-directory-in-vite-5-5fpf) that details multiple ways to move it out of the public directory.
+
 ## TODO
 
 Things I'd still like to do before calling this repo complete:
