@@ -12,6 +12,14 @@ ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 is_production = ENVIRONMENT == "production"
 project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 
+# Set up application.
+app = Flask(
+    __name__,
+    static_url_path="",
+    static_folder="public",
+    template_folder="templates",
+)
+
 # Load manifest if running in production environment.
 manifest = dict()
 if is_production:
@@ -23,14 +31,6 @@ if is_production:
         raise OSError(
             f"Manifest file not found at {manifest_path}. Run `npm run build`."
         ) from exception
-
-# Set up application.
-app = Flask(
-    __name__,
-    static_url_path="",
-    static_folder="public",
-    template_folder="templates",
-)
 
 
 # Add template function for locating Vite URLs.
