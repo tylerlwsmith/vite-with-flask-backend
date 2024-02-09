@@ -6,7 +6,7 @@ This demo supports **TypeScript** and **Scss**, but other file formats like **JS
 
 ## How to use Vite assets in this demo
 
-To add an input (or entrypoint) asset, first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets/` directory.
+To add an input (entrypoint) asset, first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets/` directory.
 
 ```js
 // Truncated vite.config.js file
