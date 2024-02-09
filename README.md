@@ -43,3 +43,12 @@ Then boot the production server with the following command:
 ```sh
 gunicorn -w 4 -b :8000 'main:app'
 ```
+
+## TODO
+
+Things I'd still like to do before calling this repo complete:
+
+- Use image from scss file to make sure it loads in development and production
+- Check import aliases from `playground` with Scss and JS
+- Bonus: hot reloading for templates (maybe? https://vitejs.dev/guide/build.html#rebuild-on-files-changes)
+- Add favicon
