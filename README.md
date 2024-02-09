@@ -81,7 +81,7 @@ gunicorn -w 4 -b 127.0.0.1:8000 'main:app'
 
 Vite's development server will build & serve all requested files within the `assets` directory, even if they are not included in the `build.rollupOptions.input` array in `vite.config.js`. If input files are not included as input assets in Vite's config file, they won't get built when running `npm run build`, and therefore won't be available in production.
 
-You must ensure that any asset that is referenced in a template is included in Vite's input asset array in prior to building the production assets.
+Ensure that any asset that is referenced in a template is also included in Vite's input asset array in prior to building the production assets.
 
 ### The manifest file is publicly viewable in production
 
