@@ -21,7 +21,7 @@ export default defineConfig({
 });
 ```
 
-To use the asset in Flask, use the `asset()` helper in the Jinja2 html templates, passing it the path of the asset within the `assets` directory.
+To use the asset in Flask, use the `asset()` helper in the Jinja2 html templates, passing it the path of the asset within the `assets/` directory.
 
 ```html
 <script type="module" src="{{ asset('scripts/app.ts') }}"></script>
@@ -79,7 +79,7 @@ gunicorn -w 4 -b 127.0.0.1:8000 'main:app'
 
 ### Assets may be accidentally omitted in production
 
-Vite's development server will build & serve all requested files within the `assets` directory, even if they are not included in the `build.rollupOptions.input` array in `vite.config.js`. If input files are not included as input assets in Vite's config file, they won't get built when running `npm run build`, and therefore won't be available in production.
+Vite's development server will build & serve all requested files within the `assets/` directory, even if they are not included in the `build.rollupOptions.input` array in `vite.config.js`. If input files are not included as input assets in Vite's config file, they won't get built when running `npm run build`, and therefore won't be available in production.
 
 Ensure that any asset that is referenced in a template is also included in Vite's input asset array in prior to building the production assets.
 
