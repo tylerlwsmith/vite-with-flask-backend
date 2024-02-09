@@ -75,9 +75,11 @@ Then boot the production server with the following command:
 gunicorn -w 4 -b :8000 'main:app'
 ```
 
-## Additional considerations
+## Potential gotchas
 
-The `manifest.json` that lists all of the compiled assets is publicly viewable at http://127.0.0.1:8000/assets/manifest.json when running this demo using production settings. If you want to learn how to keep the build manifest private, [view my blog post](https://dev.to/tylerlwsmith/move-manifestjson-to-outdirs-parent-directory-in-vite-5-5fpf) that details multiple ways to move it out of the public directory.
+When running in development, Vite will process & serve any file within the `assets` directory whether-or-not it is an input asset included in the `build.rollupOptions.input` array in `vite.config.js`. You must ensure that any asset that is referenced in a Jinja template is also included in the input asset array prior to building the production assets.
+
+When running this demo using production settings, the `manifest.json` that lists all of the compiled assets is publicly viewable at http://127.0.0.1:8000/assets/manifest.json. If you want to learn how to keep the build manifest private, [view my blog post](https://dev.to/tylerlwsmith/move-manifestjson-to-outdirs-parent-directory-in-vite-5-5fpf) that details multiple ways to move it out of the public directory.
 
 ## TODO
 
