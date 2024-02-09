@@ -77,7 +77,7 @@ gunicorn -w 4 -b 127.0.0.1:8000 'main:app'
 
 ## Potential gotchas
 
-### Accidentally omitting assets in production
+### Assets may be accidentally omitted in production
 
 Vite's development server will build & serve all requested files within the `assets` directory, even if they are not included in the `build.rollupOptions.input` array in `vite.config.js`. If input files are not included as input assets in Vite's config file, they won't get built when running `npm run build`, and therefore won't be available in production.
 
@@ -95,3 +95,4 @@ Things I'd still like to do before calling this repo complete:
 - Check import aliases from `playground` with Scss and JS
 - Bonus: hot reloading for templates (maybe? https://vitejs.dev/guide/build.html#rebuild-on-files-changes)
 - Add favicon
+- Make Jinja template look like default Vite page
