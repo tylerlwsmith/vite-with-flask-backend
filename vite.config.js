@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     manifest: "manifest.json",
     outDir: path.join(__dirname, "./public/assets"),
-    assetsDir: "", // Files will be in public/assets/assets without this.
+    assetsDir: "dist",
     emptyOutDir: true,
     rollupOptions: {
       input: ["assets/scripts/app.ts", "assets/styles/app.scss"],
