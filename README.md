@@ -1,6 +1,35 @@
 # Vite with Flask Backend
 
-## Setup local
+This repository is a minimal but complete proof-of-concept for a Vite with a backend Flask integration. It is loosely inspired by Laravel's asset bundling, but provides a much lighter abstraction between Vite and the Flask backend.
+
+This demo supports **TypeScript** and **Scss**, but other file formats like **JSX** could be added.
+
+## How to use Vite assets
+
+To add an input (or entrypoint) asset, first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets/` directory.
+
+```js
+// Truncated vite.config.js file
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: ["assets/scripts/app.ts"],
+    },
+  },
+  // more configuration...
+});
+```
+
+To use the asset in Flask, use the `asset()` helper in the Jinja2 html templates, passing it the path of the asset within the `assets` directory.
+
+```html
+<script type="module" src="{{ asset('scripts/app.ts') }}"></script>
+```
+
+Any assets imported by `app.ts` will automatically be included by Vite.
+
+## Setting up the local development environment
 
 Install the npm dependencies.
 
@@ -16,13 +45,15 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Running the app in development mode
+
 In one terminal window, start Vite in development mode.
 
 ```sh
 npm run dev
 ```
 
-In another terminal, start Flask in debug mode in order to have automatic app reloading.
+In another terminal, start Flask in `debug` mode, which provides automatic app reloading while developing.
 
 ```sh
 flask --debug --app main run --port 8000
