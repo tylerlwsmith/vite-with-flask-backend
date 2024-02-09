@@ -72,7 +72,7 @@ npm run build
 Then boot the production server with the following command:
 
 ```sh
-gunicorn -w 4 -b :8000 'main:app'
+gunicorn -w 4 -b 127.0.0.1:8000 'main:app'
 ```
 
 ## Potential gotchas
