@@ -3,7 +3,6 @@ import os
 from pathlib import Path
 
 from flask import Flask, render_template
-from werkzeug.middleware.proxy_fix import ProxyFix
 
 # Get environment variables.
 VITE_SERVER_ORIGIN = os.getenv("VITE_SERVER_ORIGIN", "http://localhost:5173/assets")
@@ -21,10 +20,6 @@ app = Flask(
     static_folder="public",
     template_folder="templates",
 )
-
-# Handle setting correct headers from reverse proxy webserver in production.
-if is_production:
-    app.wsgi_app = ProxyFix(app.wsgi_app)
 
 # Load manifest if running in production environment.
 manifest = dict()
