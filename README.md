@@ -1,6 +1,6 @@
 # Vite with Flask Backend
 
-This repository is a minimal but complete proof-of-concept for a Vite with a backend Flask integration. It is loosely inspired by Laravel's asset bundling, but provides a much lighter abstraction between Vite and the Flask backend.
+This repository is a minimal but complete proof-of-concept for a Vite with a backend Flask integration. It is loosely inspired by Laravel's asset bundling, but provides a much lighter abstraction between Vite and the Flask backend. The techniques used in this project could be adapted to integrate Vite with other backends like Go, Django, Ruby, and others.
 
 This demo supports **TypeScript** and **Scss**, but other file formats like JSX could be added.
 
