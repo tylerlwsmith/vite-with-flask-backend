@@ -87,6 +87,12 @@ Ensure that any asset that is referenced in a template is also included in Vite'
 
 When running this demo using production settings, the `manifest.json` that lists all of the compiled assets is publicly viewable at http://127.0.0.1:8000/assets/manifest.json. If you want to learn how to keep the build manifest private, [view my blog post](https://dev.to/tylerlwsmith/move-manifestjson-to-outdirs-parent-directory-in-vite-5-5fpf) that details multiple ways to move it out of the public directory.
 
+### The JS entrypoints don't need a modulepreload polyfill
+
+Vite's [Backend Integration Guide](https://vitejs.dev/guide/backend-integration.html) mentions adding `import 'vite/modulepreload-polyfill'` to the top of JS entrypoints if `build.polyfillModulePreload` is not disabled.
+
+**We should not need to do this** because our templates don't implement [module preload links](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload).
+
 ## TODO
 
 Things I'd still like to do before calling this repo complete:
