@@ -89,4 +89,4 @@ When running this demo using production settings, the `manifest.json` that lists
 
 ### The JS entrypoints don't need a modulepreload polyfill
 
-Vite's [Backend Integration Guide](https://vitejs.dev/guide/backend-integration.html) mentions adding `import 'vite/modulepreload-polyfill'` to the top of JS entrypoints if `build.polyfillModulePreload` is not disabled. **We do not need to do this** because our templates don't implement [module preload links](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload).
+Vite's [Backend Integration Guide](https://vitejs.dev/guide/backend-integration.html) mentions adding `import 'vite/modulepreload-polyfill'` to the top of JS entrypoints if `build.polyfillModulePreload` is not disabled. We do not need to do this because our templates don't implement [module preload links](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload).
