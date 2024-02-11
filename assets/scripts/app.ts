@@ -1,7 +1,8 @@
-const message: string = "Hello, world!";
+import { setupCounter } from "./counter.ts";
 
-console.log(message);
+document.addEventListener("DOMContentLoaded", function () {
+  const counter = document.querySelector<HTMLButtonElement>("#counter");
+  if (!counter) return;
 
-if (import.meta.hot) {
-  import.meta.hot.accept();
-}
+  setupCounter(counter);
+});

@@ -1,8 +1,2 @@
-$red: red;
-
-*,
-*:before,
-*:after {
-  outline: 1px solid $red;
-  margin: 0;
-}
+@import "elements";
+@import "blocks";

@@ -2,17 +2,31 @@
 <html lang="en">
   <head>
     {% if not is_production %}
-    <script type="module" src="{{ asset("@vite/client") }}"></script>
+    <script type="module" src="{{ asset('@vite/client') }}"></script>
     {% endif %}
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ asset("styles/app.scss") }}">
+    <title>Vite + Flask</title>
+    <link rel="stylesheet" href="{{ asset('styles/app.scss') }}" />
   </head>
   <body>
-    <h1>Hello, world!!</h1>
+    <div class="app">
+      <a href="https://vitejs.dev" target="_blank">
+        <img src="/vite.svg" class="logo logo--vite" alt="Vite logo" />
+      </a>
+      <a href="https://flask.palletsprojects.com" target="_blank">
+        <img src="/flask.svg" class="logo logo--flask" alt="Flask logo" />
+      </a>
+      <h1>Vite + Flask</h1>
+      <div class="card">
+        <button id="counter" type="button"></button>
+      </div>
+      <p class="read-the-docs">
+        Click on the Vite and Flask logos to learn more
+      </p>
+    </div>
 
-    <script type="module" src="{{ asset("scripts/app.ts") }}"></script>
-    <div>is production: {{ is_production }}</div>
+    <script type="module" src="{{ asset('scripts/app.ts') }}"></script>
   </body>
 </html>
