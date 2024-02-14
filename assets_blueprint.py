@@ -13,7 +13,7 @@ is_gunicorn = "gunicorn" in os.environ.get("SERVER_SOFTWARE", "")
 is_production = ENVIRONMENT == "production" or is_gunicorn
 project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 
-# Create
+# Create assets blueprint that stores all Vite-related functionality.
 assets_blueprint = Blueprint(
     "assets_blueprint",
     __name__,
