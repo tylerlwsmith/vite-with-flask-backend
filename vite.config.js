@@ -3,15 +3,15 @@ import path from "node:path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: path.join(__dirname, "./assets"),
+  root: path.join(__dirname, "./assets_source"),
   base: "/assets/",
   build: {
     manifest: "manifest.json",
-    outDir: path.join(__dirname, "./public/assets"),
-    assetsDir: "dist",
+    outDir: path.join(__dirname, "./assets_compiled"),
+    assetsDir: "public",
     emptyOutDir: true,
     rollupOptions: {
-      input: ["assets/scripts/app.ts", "assets/styles/app.scss"],
+      input: ["assets_source/scripts/app.ts", "assets_source/styles/app.scss"],
     },
   },
 });

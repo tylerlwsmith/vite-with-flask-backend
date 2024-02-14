@@ -10,7 +10,7 @@ lerna-debug.log*
 __pycache__
 .venv
 node_modules
-public/assets
+assets_compiled
 *.local
 
 # Editor directories and files

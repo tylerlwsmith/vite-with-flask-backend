@@ -19,6 +19,6 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["assets"]
+    "include": ["assets_source"]
   }
   

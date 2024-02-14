@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 
-from flask import Flask, render_template
+from flask import Flask, Blueprint, render_template
 
 # Get environment variables.
 VITE_SERVER_ORIGIN = os.getenv("VITE_SERVER_ORIGIN", "http://localhost:5173/assets")
@@ -16,15 +16,25 @@ project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 # Set up application.
 app = Flask(
     __name__,
-    static_url_path="",
+    static_url_path="/",
     static_folder="public",
     template_folder="templates",
 )
 
-# Load manifest if running in production environment.
+# Set up compiled assets folder in production environment.
+if is_production:
+    assets_blueprint = Blueprint(
+        "assets",
+        __name__,
+        static_folder="assets_compiled/public",
+        static_url_path="/assets/public",
+    )
+    app.register_blueprint(assets_blueprint)
+
+# Load manifest in production environment.
 manifest = dict()
 if is_production:
-    manifest_path = project_path / "public/assets/manifest.json"
+    manifest_path = project_path / "assets_compiled/manifest.json"
     try:
         with open(manifest_path, "r") as content:
             manifest = json.load(content)
@@ -42,7 +52,7 @@ def vite_urls():
 
     def prod(file_path):
         try:
-            return "/assets/{}".format(manifest[file_path]["file"])
+            return "/assets/" + manifest[file_path]["file"]
         except:
             return "asset-not-found"
 
