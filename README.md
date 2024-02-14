@@ -6,7 +6,7 @@ This demo supports **TypeScript** and **Scss**, but other file formats like JSX 
 
 ## How to use Vite assets in this demo
 
-To add an input asset (equivalent to a Webpack entrypoint), first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets/` directory.
+To add an input asset (equivalent to a Webpack entrypoint), first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets_source/` directory.
 
 ```js
 // Truncated vite.config.js file
@@ -14,14 +14,14 @@ To add an input asset (equivalent to a Webpack entrypoint), first add it to the 
 export default defineConfig({
   build: {
     rollupOptions: {
-      input: ["assets/scripts/app.ts"],
+      input: ["assets_source/scripts/app.ts"],
     },
   },
   // more configuration...
 });
 ```
 
-To use the asset in Flask, use the `asset()` helper in the Jinja2 html templates, passing it the path of the asset within the `assets/` directory.
+To use the asset in Flask, use the `asset()` helper in the Jinja2 html templates, passing it the path of the asset within the `assets_source/` directory.
 
 ```html
 <script type="module" src="{{ asset('scripts/app.ts') }}"></script>
@@ -79,13 +79,9 @@ gunicorn --workers 4 --bind 127.0.0.1:8000 'main:app'
 
 ### Assets may be accidentally omitted in production
 
-Vite's development server will build & serve all requested files within the `assets/` directory, even if they are not included in the `build.rollupOptions.input` array in `vite.config.js`. If input files are not included as input assets in Vite's config file, they won't get built when running `npm run build`, and therefore won't be available in production.
+Vite's development server will build & serve all requested files within the `assets_source/` directory, even if they are not included in the `build.rollupOptions.input` array in `vite.config.js`. If input files are not included as input assets in Vite's config file, they won't get built when running `npm run build`, and therefore won't be available in production.
 
 Ensure that any asset that is referenced in a template is also included in Vite's input asset array in prior to building the production assets.
-
-### The manifest file is publicly viewable in production
-
-When running this demo using production settings, the `manifest.json` that lists all of the compiled assets is publicly viewable at http://127.0.0.1:8000/assets/manifest.json. If you want to learn how to keep the build manifest private, [view my blog post](https://dev.to/tylerlwsmith/move-manifestjson-to-outdirs-parent-directory-in-vite-5-5fpf) that details multiple ways to move it out of the public directory.
 
 ### The JS entrypoints don't need a modulepreload polyfill
 
