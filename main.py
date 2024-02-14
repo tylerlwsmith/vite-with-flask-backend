@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from vite_blueprint import vite_blueprint
+from assets_blueprint import assets_blueprint
 
 
 # Set up application.
@@ -11,7 +11,7 @@ app = Flask(
 )
 
 # Provide Vite context processors and static assets directory.
-app.register_blueprint(vite_blueprint)
+app.register_blueprint(assets_blueprint)
 
 
 # Setup application routes.

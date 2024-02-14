@@ -13,8 +13,9 @@ is_gunicorn = "gunicorn" in os.environ.get("SERVER_SOFTWARE", "")
 is_production = ENVIRONMENT == "production" or is_gunicorn
 project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 
-vite_blueprint = Blueprint(
-    "assets",
+# Create
+assets_blueprint = Blueprint(
+    "assets_blueprint",
     __name__,
     static_folder="assets_compiled/public",
     static_url_path="/assets/public",
@@ -34,7 +35,7 @@ if is_production:
 
 
 # Add `asset()` function for producing Vite asset URLs.
-@vite_blueprint.app_context_processor
+@assets_blueprint.app_context_processor
 def vite_urls():
     def dev(file_path):
         return f"{VITE_SERVER_ORIGIN}/{file_path}"
@@ -49,6 +50,6 @@ def vite_urls():
 
 
 # Add `is_production` variable for determining the current environment.
-@vite_blueprint.app_context_processor
+@assets_blueprint.app_context_processor
 def env():
     return dict(is_production=is_production)
