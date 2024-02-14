@@ -34,22 +34,19 @@ if is_production:
         ) from exception
 
 
-# Add `asset()` function for producing Vite asset URLs.
+# Add `is_production` variable and `asset()` function to app context.
 @assets_blueprint.app_context_processor
-def vite_urls():
-    def dev(file_path):
+def add_context():
+    def dev_asset(file_path):
         return f"{VITE_SERVER_ORIGIN}/{file_path}"
 
-    def prod(file_path):
+    def prod_asset(file_path):
         try:
             return "/assets/" + manifest[file_path]["file"]
         except:
             return "asset-not-found"
 
-    return dict(asset=prod if is_production else dev)
-
-
-# Add `is_production` variable for determining the current environment.
-@assets_blueprint.app_context_processor
-def env():
-    return dict(is_production=is_production)
+    return {
+        "asset": prod_asset if is_production else dev_asset,
+        "is_production": is_production,
+    }
