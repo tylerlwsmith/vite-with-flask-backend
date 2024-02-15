@@ -85,4 +85,4 @@ Ensure that any asset that is referenced in a template is also included in Vite'
 
 ### The JS entrypoints don't need a modulepreload polyfill
 
-Vite's [Backend Integration Guide](https://vitejs.dev/guide/backend-integration.html) mentions adding `import 'vite/modulepreload-polyfill'` to the top of JS entrypoints if `build.polyfillModulePreload` is not disabled. We do not need to do this because our templates don't implement [module preload links](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload).
+Vite's [Backend Integration Guide](https://vitejs.dev/guide/backend-integration.html) mentions adding `import 'vite/modulepreload-polyfill'` to the top of JS entrypoints if `build.polyfillModulePreload` is not disabled. Vite automatically generates <link rel="modulepreload"> directives for entry chunks and their direct imports in the built HTML ([docs](https://vitejs.dev/guide/features.html)), but Vite is not building our HTML templates, and our Jinja templates don't implement [module preload links](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload).
