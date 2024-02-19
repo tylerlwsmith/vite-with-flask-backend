@@ -6,11 +6,11 @@ from flask import Blueprint
 
 # Get environment variables.
 VITE_SERVER_ORIGIN = os.getenv("VITE_SERVER_ORIGIN", "http://localhost:5173/assets")
-ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
+APP_ENVIRONMENT = os.getenv("APP_ENVIRONMENT", "development")
 
 # Set application constants.
 is_gunicorn = "gunicorn" in os.environ.get("SERVER_SOFTWARE", "")
-is_production = ENVIRONMENT == "production" or is_gunicorn
+is_production = APP_ENVIRONMENT == "production" or is_gunicorn
 project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 
 # Create assets blueprint that stores all Vite-related functionality.
