@@ -10,6 +10,7 @@ export default defineConfig({
     outDir: path.join(__dirname, "./assets_compiled"),
     assetsDir: "public",
     emptyOutDir: true,
+    copyPublicDir: true,
     rollupOptions: {
       input: ["assets_source/scripts/app.ts", "assets_source/styles/app.scss"],
     },
