@@ -22,7 +22,7 @@ assets_blueprint = Blueprint(
 )
 
 # Load manifest file in the production environment.
-manifest = dict()
+manifest = {}
 if is_production:
     manifest_path = project_path / "assets_compiled/manifest.json"
     try:
