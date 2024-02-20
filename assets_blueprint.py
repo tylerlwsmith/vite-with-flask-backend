@@ -34,7 +34,7 @@ if is_production:
         ) from exception
 
 
-# Add `is_production` variable and `asset()` function to app context.
+# Add `asset()` function and `is_production` to app context.
 @assets_blueprint.app_context_processor
 def add_context():
     def dev_asset(file_path):
@@ -47,6 +47,6 @@ def add_context():
             return "asset-not-found"
 
     return {
-        "is_production": is_production,
         "asset": prod_asset if is_production else dev_asset,
+        "is_production": is_production,
     }
