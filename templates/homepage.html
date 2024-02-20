@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% if not is_production %}
+    {%- if not is_production %}
     <script type="module" src="{{ asset('@vite/client') }}"></script>
-    {% endif %}
+    {%- endif %}
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
