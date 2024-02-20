@@ -21,7 +21,7 @@ assets_blueprint = Blueprint(
     static_url_path="/assets/public",
 )
 
-# Load manifest file in production environment.
+# Load manifest file in the production environment.
 manifest = dict()
 if is_production:
     manifest_path = project_path / "assets_compiled/manifest.json"
