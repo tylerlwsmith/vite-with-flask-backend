@@ -47,6 +47,6 @@ def add_context():
             return "asset-not-found"
 
     return {
-        "asset": prod_asset if is_production else dev_asset,
         "is_production": is_production,
+        "asset": prod_asset if is_production else dev_asset,
     }
