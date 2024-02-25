@@ -10,10 +10,10 @@ export default defineConfig({
     manifest: "manifest.json",
     assetsDir: "bundled",
     rollupOptions: {
-        input: [
-          "assets_source/script.ts",
-          "assets_source/styles.scss",
-        ],
+      input: [
+        "assets_source/scripts/app.ts",
+        "assets_source/styles/app.scss",
+      ],
     },
     emptyOutDir: true,
     copyPublicDir: false,
