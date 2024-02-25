@@ -5,12 +5,12 @@ from pathlib import Path
 from flask import Blueprint
 
 # Get environment variables.
-VITE_SERVER_ORIGIN = os.getenv("VITE_SERVER_ORIGIN", "http://localhost:5173/assets")
-APP_ENVIRONMENT = os.getenv("APP_ENVIRONMENT", "development")
+VITE_ORIGIN = os.getenv("VITE_ORIGIN", "http://localhost:5173")
+FLASK_DEBUG = os.getenv("FLASK_DEBUG")
 
 # Set application constants.
 is_gunicorn = "gunicorn" in os.environ.get("SERVER_SOFTWARE", "")
-is_production = APP_ENVIRONMENT == "production" or is_gunicorn
+is_production = FLASK_DEBUG != "1" or is_gunicorn
 project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 
 # Create assets blueprint that stores all Vite-related functionality.
@@ -38,7 +38,7 @@ if is_production:
 @assets_blueprint.app_context_processor
 def add_context():
     def dev_asset(file_path):
-        return f"{VITE_SERVER_ORIGIN}/{file_path}"
+        return f"{VITE_ORIGIN}/assets/{file_path}"
 
     def prod_asset(file_path):
         try:
