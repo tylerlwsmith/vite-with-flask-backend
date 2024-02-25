@@ -42,7 +42,7 @@ def add_context():
 
     def prod_asset(file_path):
         try:
-            return "/assets/" + manifest[file_path]["file"]
+            return f"/assets/{manifest[file_path]['file']}"
         except:
             return "asset-not-found"
 
