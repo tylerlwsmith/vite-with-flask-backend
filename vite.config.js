@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     manifest: "manifest.json",
     outDir: path.join(__dirname, "./assets_compiled"),
-    assetsDir: "public",
+    assetsDir: "bundled",
     emptyOutDir: true,
     copyPublicDir: true,
     rollupOptions: {

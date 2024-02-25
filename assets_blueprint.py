@@ -17,8 +17,8 @@ project_path = Path(os.path.dirname(os.path.abspath(__file__)))
 assets_blueprint = Blueprint(
     "assets_blueprint",
     __name__,
-    static_folder="assets_compiled/public",
-    static_url_path="/assets/public",
+    static_folder="assets_compiled/bundled",
+    static_url_path="/assets/bundled",
 )
 
 # Load manifest file in the production environment.
