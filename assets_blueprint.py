@@ -5,8 +5,8 @@ from pathlib import Path
 from flask import Blueprint
 
 # Get environment variables.
+FLASK_DEBUG = os.getenv("FLASK_DEBUG", "0")
 VITE_ORIGIN = os.getenv("VITE_ORIGIN", "http://localhost:5173")
-FLASK_DEBUG = os.getenv("FLASK_DEBUG")
 
 # Set application constants.
 is_gunicorn = "gunicorn" in os.environ.get("SERVER_SOFTWARE", "")
