@@ -4,6 +4,8 @@ This repository is a minimal but complete proof-of-concept for a Vite backend in
 
 This demo supports **TypeScript** and **Scss**, but other file formats like JSX could be added.
 
+> I wrote an [in-depth blog post](<(https://dev.to/tylerlwsmith/build-a-vite-5-backend-integration-with-flask-jch)>) about this integration–check it out if you want to learn more about how this repo works!
+
 ## How to use Vite assets in this demo
 
 To add an input asset (equivalent to a Webpack entrypoint), first add it to the `build.rollupOptions.input` array in `vite.config.js`. The asset must live in the `assets_source/` directory.
